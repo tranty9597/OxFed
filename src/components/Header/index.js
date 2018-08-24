@@ -1,7 +1,7 @@
 import React from "react";
 import {
     View,
-    Text,
+    StatusBar,
     StyleSheet,
     Dimensions,
     Image,
@@ -38,29 +38,32 @@ class Header extends React.Component {
                 <View
                     style={[
                         styles.container,
-                        ViewStyles.flexCenter,
-                        ViewStyles.flexDirectionRow,
-                        { marginTop: Platform.OS === "ios" ? 15 : 0}
+                        { paddingTop: Platform.OS === "ios" ? 20 : 0 }
                     ]}
                 >
-                    {showLeftIcon && (
-                        <TouchableOpacity
-                            onPress={() => this._onPressLeftIcon()}
-                            style={[styles.iconLeft, ViewStyles.flexCenterVertical,]}
-                        >
-                            <Image style={styles.icon} source={this.props.lefIcon} />
-                        </TouchableOpacity>
-                    )}
+                    <View style={[ViewStyles.flexCenter,
+                    ViewStyles.flexDirectionRow,]}>
 
-                    <Image style={styles.logo} source={require("../../assets/images/whiteLogo/whiteLogo.png")}/>
-                    {showRightIcon && (
-                        <TouchableOpacity
-                            onPress={() => this._onPressRightIcon()}
-                            style={[styles.iconRight, ViewStyles.flexCenterVertical]}
-                        >
-                            <Image style={styles.icon} source={this.props.rightIcon} />
-                        </TouchableOpacity>
-                    )}
+                        <StatusBar backgroundColor={AppColor.blue} translucent={true} />
+                        {showLeftIcon && (
+                            <TouchableOpacity
+                                onPress={() => this._onPressLeftIcon()}
+                                style={[styles.iconLeft, ViewStyles.flexCenterVertical,]}
+                            >
+                                <Image style={styles.icon} source={this.props.lefIcon} />
+                            </TouchableOpacity>
+                        )}
+
+                        <Image style={styles.logo} source={require("../../assets/images/whiteLogo/whiteLogo.png")} />
+                        {showRightIcon && (
+                            <TouchableOpacity
+                                onPress={() => this._onPressRightIcon()}
+                                style={[styles.iconRight, ViewStyles.flexCenterVertical]}
+                            >
+                                <Image style={styles.icon} source={this.props.rightIcon} />
+                            </TouchableOpacity>
+                        )}
+                    </View>
                 </View>
             </TouchableWithoutFeedback>
         );
@@ -91,7 +94,7 @@ Header.propTypes = {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: AppColor.blue,
-        height: screenHeight * 0.07,
+        height: screenHeight * 0.8,
         maxHeight: 60,
         width: "100%",
         position: "relative"
@@ -103,9 +106,9 @@ const styles = StyleSheet.create({
         width: 26,
         height: 24,
     },
-    logo:{
+    logo: {
         width: 87,
-        height: 35,  
+        height: 35,
     },
     iconLeft: {
         position: "absolute",

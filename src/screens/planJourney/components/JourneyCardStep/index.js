@@ -10,9 +10,9 @@ const RenderCardTitle = ({ show, title }) => {
     if (show) {
         return (
             <Text
-                style={[TextStyles.alignLeftText, {
+                style={[TextStyles.alignLeftText,TextStyles.largeSize, {
                     paddingLeft: 5, paddingRight: 10,
-                    fontWeight: "normal", fontSize: 18, color: show ? AppColor.gray : AppColor.white
+                     color: AppColor.gray
                 }]}>{title}
             </Text>
         )
@@ -66,7 +66,7 @@ class JourneyCardItem extends Component {
 
                         }
                         renderCollapseView={(expand) =>
-                            <View style={[styles.expandContainer, { paddingTop: 0, paddingBottom: 60 }]}>
+                            <View style={[styles.expandContainer, { paddingTop: 0, paddingBottom: 50 }]}>
                                 {expandComponent}
                             </View>
                         } />

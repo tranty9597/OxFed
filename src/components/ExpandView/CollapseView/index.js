@@ -25,9 +25,9 @@ class CollapseView extends Component {
     }
 
     collapse = () => {
-        const { startpoint, endpoint, animation, collapse } = this.state;
+        const { startpoint, endpoint, animation, collapse, first } = this.state;
         let startAnim = collapse ? endpoint + startpoint : startpoint;
-        let endAnim = collapse ? startpoint : startpoint + endpoint;
+        let endAnim = collapse ? startpoint :  startpoint + endpoint;
         this.setState({
             collapse: !this.state.collapse
         })
