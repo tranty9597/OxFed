@@ -10,7 +10,10 @@ const RenderCardTitle = ({ show, title }) => {
     if (show) {
         return (
             <Text
-                style={[TextStyles.alignLeftText, { paddingLeft: 5, fontWeight: "normal", fontSize: 18, color: show ? AppColor.gray : AppColor.white }]}>{title}
+                style={[TextStyles.alignLeftText, {
+                    paddingLeft: 5, paddingRight: 10,
+                    fontWeight: "normal", fontSize: 18, color: show ? AppColor.gray : AppColor.white
+                }]}>{title}
             </Text>
         )
     } else {

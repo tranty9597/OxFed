@@ -19,6 +19,8 @@ class CollapseView extends Component {
         this.state = {
             collapse: this.props.collapse,
             animation: new Animated.Value(),
+            first: true,
+            sec: true
         };
     }
 
@@ -41,21 +43,31 @@ class CollapseView extends Component {
     }
 
     startpoint = (layout) => {
-        if (!this.state.collapse) this.setState({ animation: new Animated.Value(layout.nativeEvent.layout.height) });
-        this.setState({
-            startpoint: layout.nativeEvent.layout.height
-        })
+        let { first } = this.state
+        if (!this.state.collapse && first) this.setState(
+            {
+                animation: new Animated.Value(layout.nativeEvent.layout.height),
+                startpoint: layout.nativeEvent.layout.height,
+                first: false
+            }
+        );
+
     }
 
     endpoint = (layout) => {
-        if (this.state.collapse) this.setState({ animation: new Animated.Value(layout.nativeEvent.layout.height) });
-        this.setState({
-            endpoint: layout.nativeEvent.layout.height,
-        })
+        let { sec } = this.state
+        if (this.state.collapse && sec) this.setState(
+            {
+                animation: new Animated.Value(layout.nativeEvent.layout.height),
+                endpoint: layout.nativeEvent.layout.height,
+                sec: false
+            }
+        );
     }
 
     render() {
         const { startpoint, endpoint, animation, collapse } = this.state;
+
         return (
             <Animated.View style={{ height: this.state.animation, backgroundColor: 'transparent', overflow: 'hidden' }}>
                 <TouchableOpacity activeOpacity={1} onPress={() => { this.props.onPress(); this.collapse() }} onLayout={this.startpoint}>

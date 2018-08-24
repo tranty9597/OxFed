@@ -1,8 +1,8 @@
 import { StyleSheet, Platform } from "react-native"
 import AppColor from "../Color"
 
-const AppFont = "normal";
-const AppBoldFont = "normal";
+const AppFont = "Avenir";
+const AppBoldFont = "Avenir";
 
 const TextStyles = StyleSheet.create({
     appFont: {

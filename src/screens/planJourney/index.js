@@ -112,6 +112,7 @@ class RenderStepComp extends React.Component {
             case 3:
                 content = titles[step].map((t, i) => {
                     return <CardSwitch
+                        key={i}
                         onPress={() => this.setState({ activeBtn: i })}
                         selected={activeBtn === i}
                         label={t.content}
@@ -122,6 +123,7 @@ class RenderStepComp extends React.Component {
                 let date = []
                 titles[step].date.forEach((t, i) => {
                     date.push(<CardButton
+                        key={i}
                         onPress={() => this.setState({ dateAct: i })}
                         selected={dateAct === i}
                         title={t.content}
@@ -130,7 +132,7 @@ class RenderStepComp extends React.Component {
                 let time = []
                 titles[step].time.forEach((t, i) => {
                     time.push(
-                        <View style={{ width: "33%", padding: 5 }}>
+                        <View key={i} style={{ width: "33%", padding: 5 }}>
                             <CardButton
                                 onPress={() => this.setState({ timeAct: i })}
                                 selected={timeAct === i}
@@ -159,6 +161,7 @@ class RenderStepComp extends React.Component {
             default:
                 content = titles[step].map((t, i) => {
                     return <CardButton
+                        key={i}
                         onPress={() => this.setState({ activeBtn: i })}
                         selected={activeBtn === i}
                         title={t.content}
