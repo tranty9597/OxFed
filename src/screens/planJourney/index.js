@@ -12,8 +12,8 @@ const heightComponent = 55
 let steps = [
     { content: "Step 1: Which practice are you going to?", active: true },
     { content: "Step 2: Select pick-up location", active: true },
-    { content: "Step 3: Select transport provider", active: true },
-    { content: "Step 4: Mobility Aid / Passenger Assistance", active: false },
+    { content: "Step 3: Mobility Aid / Passenger Assistance", active: false },
+    { content: "Step 4: Select transport provider", active: true },
     { content: "Step 5: Time", active: true }
 ]
 let titles = [
@@ -27,14 +27,14 @@ let titles = [
         { content: "Current Location", active: false },
     ],
     [
-        { content: "Aspire", active: false },
-        { content: "OxSwift", active: false },
-    ],
-    [
         { content: "WheelChair access", active: false },
         { content: "Hydraulic lift", active: false },
         { content: "Carer", active: false },
         { content: "Guide Dog", active: false },
+    ],
+    [
+        { content: "Aspire", active: false },
+        { content: "OxSwift", active: false },
     ],
     {
         date: [
@@ -109,7 +109,7 @@ class RenderStepComp extends React.Component {
         let content;
 
         switch (step) {
-            case 3:
+            case 2:
                 content = titles[step].map((t, i) => {
                     return <CardSwitch
                         key={i}
@@ -187,7 +187,10 @@ class Login extends Component {
     }
     render() {
         let { activeStep, appStep } = this.state
-        let header = <Header leftIconOnPress={() => { this.props.navigation.pop() }} />
+        let header = <Header
+            leftIconOnPress={() => { this.props.navigation.pop() }}
+            rightIconOnPress={() => { this.props.navigation.navigate("Login") }}
+        />
         let firstStep = <View style={[ViewStyles.container, { height: screenHeight * 0.85, padding: 30, marginTop: 20 }]}>
             <MainButton
                 title="GP/SURGERY"
