@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, StyleSheet, Text, FlatList } from "react-native"
+import { View, StyleSheet, Text, FlatList, Alert } from "react-native"
 
 import { Header, AppImageBackground, AppButton, ToggleSwitch } from "../../components"
 import { ViewStyles, AppColor, screenHeight, TextStyles } from '../../styles';
@@ -187,7 +187,7 @@ class Login extends Component {
     }
     render() {
         let { activeStep, appStep } = this.state
-        let header = <Header />
+        let header = <Header leftIconOnPress={() => { this.props.navigation.pop() }} />
         let firstStep = <View style={[ViewStyles.container, { height: screenHeight * 0.85, padding: 30, marginTop: 20 }]}>
             <MainButton
                 title="GP/SURGERY"
@@ -204,9 +204,16 @@ class Login extends Component {
         </View>
         let secStep = <View style={[ViewStyles.container, { height: screenHeight * 0.85, padding: 10 }]}>
             <FlatList
-                ListFooterComponent={<View style={{ height: 50 }} />}
+                ListFooterComponent={<View style={{ paddingBottom: 50 }} >
+                    <MainButton
+                        title="BOOKING"
+                        onPress={() => Alert.alert("Booking", "Booking sucessfully!")}
+                    />
+                </View>}
                 keyExtractor={(item, index) => "Journey " + index}
                 data={steps}
+                initialNumToRender={2}
+                maxToRenderPerBatch={2}
                 renderItem={(item) => {
                     return (
                         <JourneyCardStep

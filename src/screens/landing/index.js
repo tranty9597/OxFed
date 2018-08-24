@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Image, StyleSheet, Text } from "react-native"
+import { View, Image, StyleSheet, Text, Alert } from "react-native"
 
 import { AppImageBackground, AppButton } from "../../components"
 import { ViewStyles, AppColor, TextStyles } from '../../styles';
@@ -28,6 +28,7 @@ class Landing extends Component {
                     />
 
                     <AppButton
+                        onPress={() => this.props.navigation.push("PlanJourney")}
                         height={heightComponent}
                         textStyle={{
                             color: AppColor.gray, fontSize: 20, fontWeight: '500',
@@ -35,6 +36,7 @@ class Landing extends Component {
                         title="UPCOMING JOURNEYS"
                     />
                     <AppButton
+                        onPress={() => Alert.alert("Setting", "Onpress sucessfully!")}
                         height={heightComponent}
                         textStyle={{
                             color: AppColor.gray, fontSize: 20, fontWeight: '500',

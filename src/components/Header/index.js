@@ -5,7 +5,6 @@ import {
     StyleSheet,
     Dimensions,
     Image,
-    Platform,
     TouchableOpacity,
     TouchableWithoutFeedback,
     Keyboard
@@ -32,17 +31,17 @@ class Header extends React.Component {
     }
 
     render() {
-        let { showLeftIcon, showRightIcon, headerTitle, increaseMarginTop } = this.props;
+        let { showLeftIcon, showRightIcon } = this.props;
         return (
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <View
                     style={[
                         styles.container,
-                        { paddingTop: Platform.OS === "ios" ? 20 : 0 }
+                        { paddingTop: 25 }
                     ]}
                 >
                     <View style={[ViewStyles.flexCenter,
-                    ViewStyles.flexDirectionRow,]}>
+                    ViewStyles.flexDirectionRow, {position: "relative"}]}>
 
                         <StatusBar backgroundColor={AppColor.blue} translucent={true} />
                         {showLeftIcon && (
@@ -94,8 +93,7 @@ Header.propTypes = {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: AppColor.blue,
-        height: screenHeight * 0.8,
-        maxHeight: 60,
+        height: 70,
         width: "100%",
         position: "relative"
     },
