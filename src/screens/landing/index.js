@@ -36,7 +36,7 @@ class Landing extends Component {
                         title="UPCOMING JOURNEYS"
                     />
                     <AppButton
-                        onPress={() => Alert.alert("Setting", "Onpress sucessfully!")}
+                        onPress={() => this.props.navigation.pop()}
                         height={heightComponent}
                         textStyle={{
                             color: AppColor.gray, fontSize: 20, fontWeight: '500',
